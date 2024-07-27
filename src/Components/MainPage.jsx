@@ -8,7 +8,7 @@ const MainPage = () => {
     <div className=" flex justify-center relative w-full max-w-full">
         <LoginHeader />
         <img className='h-[100vh] w-full' src={BgImage} alt="img" />
-        <div class="absolute inset-0 bg-black bg-opacity-65"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#050505c5]"></div>
     </div>
   )
 }

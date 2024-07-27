@@ -8,10 +8,10 @@ const Login = () => {
   return (
     <div className=" flex justify-center items-center relative w-full max-w-full">
       <div className="top-0 absolute  mx-auto flex items-center justify-between w-[60%] max-w-[70%]">
-        <img className=" z-10 min-w-14  max-w-36" src={NLogo} alt="Logo" />
+        <img className=" z-10 min-w-14  max-w-40" src={NLogo} alt="Logo" />
       </div>
       <img className="h-[100vh] w-full" src={BgImage} alt="img" />
-      <div class="absolute inset-0 bg-black bg-opacity-65"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#050505c5]"></div>
       <LoginForm />
     </div>
   );
