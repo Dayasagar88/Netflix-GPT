@@ -7,6 +7,13 @@
  - Login form
  - Sign up form
  - Form validation(Using useRef Hook) 
+ - FireBase setup
+ - Deploying our app to production
+ - Create Sign up user account
+ - Implement sign in user Api
+ - Created user store using redux/toolkit
+ - update profile(name , photoURL)
+ - Implemented sign out
 
 
 # Features
