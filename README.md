@@ -16,6 +16,16 @@
  - Implemented sign out
  - unsubscribe to the onAuthStateChanged callback
  - Add hard coded value to the constanrts files
+ - Register for TMDB API
+   - Register app on TMDB
+   - Find movie list API
+   - fetch the API in project
+- Created movie slice
+- Update the store with movie data
+- Fetch the data for trailer video
+- Update the store with trailer video
+- Embedded the youtube video and make it autoplay
+
 
 
 # Features
