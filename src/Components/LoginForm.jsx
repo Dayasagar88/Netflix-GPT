@@ -10,7 +10,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../Utils/firebase";
+import { auth } from "../Utils/Firebase";
 import { PhoneAuthCredential } from "firebase/auth/web-extension";
 import { photoURL } from "../Utils/Constants";
 

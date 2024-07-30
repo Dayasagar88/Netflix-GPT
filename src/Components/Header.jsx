@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import NLogo from "../Images/Netflix_Logo_PMS.png";
 import { useSelector } from "react-redux";
 import {  signOut } from "firebase/auth";
-import { auth } from "../Utils/firebase";
+import { auth } from "../Utils/Firebase";
 
 const Header = () => {
   const navigate = useNavigate();
