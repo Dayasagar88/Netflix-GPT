@@ -5,7 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import MainPage from "./MainPage";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Utils/Firebase";
+import { auth } from "../Utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../Utils/UserSlice";
 
