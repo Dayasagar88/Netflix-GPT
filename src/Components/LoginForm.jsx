@@ -10,7 +10,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../Utils/firebase";
+import { auth } from "../Utils/Firebase";
 import { photoURL } from "../Utils/Constants";
 
 const LoginForm = () => {
