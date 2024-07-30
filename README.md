@@ -14,6 +14,8 @@
  - Created user store using redux/toolkit
  - update profile(name , photoURL)
  - Implemented sign out
+ - unsubscribe to the onAuthStateChanged callback
+ - Add hard coded value to the constanrts files
 
 
 # Features

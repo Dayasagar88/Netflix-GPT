@@ -22,13 +22,13 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute flex items-center justify-between  mx-auto w-[60%] max-w-[70%]">
-      <img className=" z-10 w-28 min-w-14  sm:w-40" src={NLogo} alt="Logo" />
+    <div className="absolute flex items-center justify-between px-2 sm:px-0  mx-auto w-full sm:w-[70%]">
+      <img className=" z-10 w-24 min-w-14  sm:w-40" src={NLogo} alt="Logo" />
       {user && <div className="flex gap-3">
         <img className="sm:w-10 w-4 rounded-full" src={user.photoURL} alt="img" />
       <button
         onClick={handleSignOut}
-        className="min-w-1 z-10 my-auto text-white bg-red-600 px-1 pb-1 sm:px-3  sm:pb-[5px] sm:pt-[3px]  rounded-[4px] sm:text-[1rem] text-[.8rem]  font-semibold hover:bg-red-700 transition-bg duration-100 flex items-center justify-center"
+        className="min-w-1 z-10 my-auto text-white bg-red-600 px-1 pb-1 sm:px-3  sm:pb-[5px] sm:pt-[3px]  rounded-[4px] sm:text-[1rem] text-[.75rem]  font-semibold hover:bg-red-700 transition-bg duration-100 flex items-center justify-center"
       >
         Sign out
       </button>

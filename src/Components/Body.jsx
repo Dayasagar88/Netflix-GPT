@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Login from "./Login";
 import Browse from "./Browse";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, useNavigate } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import MainPage from "./MainPage";
 import { onAuthStateChanged } from "firebase/auth";
@@ -28,7 +28,7 @@ const Body = () => {
   ]);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+   const unsubscribe =  onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(
@@ -39,13 +39,17 @@ const Body = () => {
             photoURL: photoURL,
           })
         );
-        console.log(uid, email, displayName);
+        // console.log(uid, email, displayName);
       } else {
         //user is signed out
         dispatch(removeUser());
         //..
       }
     });
+
+
+    //Unsubscribe when component unmount
+    return() => unsubscribe();
   }, []);
 
   return (

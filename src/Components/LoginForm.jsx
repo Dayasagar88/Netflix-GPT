@@ -11,6 +11,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../Utils/firebase";
+import { PhoneAuthCredential } from "firebase/auth/web-extension";
+import { photoURL } from "../Utils/Constants";
 
 const LoginForm = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -73,7 +75,7 @@ const LoginForm = () => {
           }, 5000);
 
           updateProfile(user, {
-            displayName: nameValue, photoURL: "https://avatars.githubusercontent.com/u/152199702?v=4"
+            displayName: nameValue, photoURL: {photoURL}
           }).then(() => {
           }).catch((error) => {
             navigate("/error")
