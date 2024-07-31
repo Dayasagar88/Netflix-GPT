@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute flex items-center justify-between px-2 sm:px-0  mx-auto w-full sm:w-[70%]">
+    <div className="absolute z top-0 flex items-center justify-between px-2 sm:px-4 w-full">
       <img className=" z-10 w-24 min-w-14  sm:w-40" src={NLogo} alt="Logo" />
       {user && <div className="flex gap-3">
         <img className="sm:w-10 w-4 rounded-full" src={user.photoURL} alt="img" />

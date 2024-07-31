@@ -25,6 +25,7 @@
 - Fetch the data for trailer video
 - Update the store with trailer video
 - Embedded the youtube video and make it autoplay
+- Added MovieList(popular , top rated, upcoming)
 
 
 
