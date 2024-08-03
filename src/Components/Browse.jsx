@@ -1,36 +1,38 @@
-import useNowPlayingMovies from '../Hooks/useNowPlayingMovies'
-import useTrendingMovies from '../Hooks/useTrendingMovies'
-import useUpComingMovies from '../Hooks/useUpcomingMovies'
-import Header from './Header'
-import MainContainer from './MainContainer'
-import SecondaryCont from './SecondaryCont'
-
-
+import { useSelector } from "react-redux";
+import useNowPlayingMovies from "../Hooks/useNowPlayingMovies";
+import useTopRatedMovies from "../Hooks/useTopRatedMovies";
+import useTrendingMovies from "../Hooks/useTrendingMovies";
+import useUpComingMovies from "../Hooks/useUpcomingMovies";
+import Header from "./Header";
+import MainContainer from "./MainContainer";
+import SecondaryCont from "./SecondaryCont";
+import GptSearch from "./GptSearch";
 
 const Browse = () => {
-  const nowPlayingMovies = useNowPlayingMovies()
-  const trendingMovies = useTrendingMovies();
-  const upComingMovies = useUpComingMovies()
-  
-  return  (
-  <div className='flex flex-col justify-center overflow-x-hidden bg-black'>
-      <Header/>
+  useNowPlayingMovies();
+  useTrendingMovies();
+  useUpComingMovies();
+  useTopRatedMovies();
+  const gptSearch = useSelector((store) => store.gptSearch.gptSearch);
 
-      {/* 
-        Main container
-         - VideoBackground
-         - video title
-        Secondary container
-         - Movies List * n
-           - cards * n
-      */}
+  console.log(process.env.REACT_APP_GEN_AI_KEY )
+  console.log(process.env.REACT_APP_TMDB_KEY)
 
-      <MainContainer/>
-      <SecondaryCont/>
+  return (
+    
+    <div className="flex flex-col justify-center overflow-x-hidden bg-black">
+      <Header gptSearch={gptSearch}/>
 
-      
+      {gptSearch ? (
+        <GptSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryCont />
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Browse
+export default Browse;
