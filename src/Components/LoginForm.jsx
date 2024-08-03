@@ -12,8 +12,11 @@ import {
 } from "firebase/auth";
 import { auth } from "../Utils/Firebase";
 import { photoURL } from "../Utils/Constants";
+import { useSelector } from "react-redux";
+import lang from "../Utils/LanguageConstants";
 
 const LoginForm = () => {
+  const langkey = useSelector(store => store.config.language)
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [emailErrMsg, setEmailErrMsg] = useState(null);
   const [passwordErrMsg, setPasswordErrMsg] = useState(null);
@@ -44,15 +47,15 @@ const LoginForm = () => {
       validName = validateName(nameValue);
     }
     if (!validEmail) {
-      setEmailErrMsg("Please enter a valid email address or phone number.");
+      setEmailErrMsg(`${lang[langkey].enterValidEmailOrPhone}`);
     }
     if (!validPassword) {
       setPasswordErrMsg(
-        "Your password must contain uppercase , lowercase letters & numbers."
+        `${lang[langkey].passwordRequirement}`
       );
     }
     if (!validName) {
-      setNameErrMsg("Enter your full name");
+      setNameErrMsg(`${lang[langkey].enterFullName}`);
     }
 
     if ((isSignInForm || !isSignInForm) && (!validEmail || !validPassword))
@@ -80,7 +83,7 @@ const LoginForm = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setEmailErrMsg("Email already in use");
+          setEmailErrMsg(`${lang[langkey].emailInUse}`);
         });
     } else {
       //Proceed with sign-in
@@ -93,7 +96,7 @@ const LoginForm = () => {
         .catch((error, userCredential) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setPasswordErrMsg("Invalid credentials");
+          setPasswordErrMsg(`${lang[langkey].invalidCredentials}`);
         });
     }
   };
@@ -120,11 +123,11 @@ const LoginForm = () => {
             } -top-5 sm:-top-7 text-white font-semibold sm:text-[1.1rem] transition-scale duration-200 absolute left-0 right-0 mx-auto w-fit`}
           >
             <i className=" text-green-500 mr-2 fa-regular fa-circle-check"></i>
-            Account created successfully
+            {lang[langkey].accountCreated}
           </p>
         )}
         <h1 className="text-white text-[1.2rem] sm:text-[1.7rem] font-bold sm:mb-4">
-          {isSignInForm ? "Sign In" : "Sign Up"}
+          {isSignInForm ? `${lang[langkey].signin}` : `${lang[langkey].signup}`}
         </h1>
         {isSignInForm ? (
           <input
@@ -133,7 +136,7 @@ const LoginForm = () => {
               emailErrMsg ? "border border-red-500" : "border border-gray-500 "
             }`}
             type="email"
-            placeholder="Email or mobile number"
+            placeholder={lang[langkey].emailOrMobile}
           />
         ) : (
           <input
@@ -142,7 +145,7 @@ const LoginForm = () => {
               nameErrMsg ? "border border-red-500" : "border border-gray-500 "
             }`}
             type="text"
-            placeholder="Full Name"
+            placeholder={lang[langkey].fullName}
           />
         )}
 
@@ -170,7 +173,7 @@ const LoginForm = () => {
                   : "border border-gray-500 "
               }`}
               type={hidePassword ? "password" : "text"}
-              placeholder="Password"
+              placeholder={lang[langkey].password}
             />
             {hidePassword ? (
               <button
@@ -204,7 +207,7 @@ const LoginForm = () => {
                   : "border border-gray-500 "
               }`}
               type="email"
-              placeholder="Email or mobile number"
+              placeholder={lang[langkey].emailOrMobile}
             />
             {emailErrMsg && !isSignInForm && (
               <p className="text-red-500 -mt-4 -mb-4 text-sm font-semibold">
@@ -221,7 +224,7 @@ const LoginForm = () => {
                     : "border border-gray-500 "
                 }`}
                 type={hidePassword ? "password" : "text"}
-                placeholder="Password"
+                placeholder={lang[langkey].password}
               />
               {hidePassword ? (
                 <button
@@ -262,19 +265,19 @@ const LoginForm = () => {
           }}
           className="text-white  font-semibold bg-[#e80716] sm:py-[8px] p-[4px] rounded-[3px] transition-bg  duration-200 hover:bg-red-700"
         >
-          {isSignInForm ? "Sign In" : "Sign Up"}
+          {isSignInForm ? `${lang[langkey].signin}` : `${lang[langkey].signup}`}
         </button>
         {isSignInForm && (
-          <p className="text-gray-500  font-semibold mx-auto">OR</p>
+          <p className="text-gray-500  font-semibold mx-auto">{lang[langkey].or}</p>
         )}
         {isSignInForm && (
           <button className="text-white p-[4px] sm:py-[8px] rounded-[3px] bg-[#6b5f5fac] font-semibold  transition-bg ease-in duration-200 hover:bg-[#6b5f5fd2]">
-            Use a sign-in code
+            {lang[langkey].useSignInCode}
           </button>
         )}
         {isSignInForm && (
           <p className="text-white mx-auto cursor-pointer mt-[-10px] text-sm hover:underline">
-            Forgot password?
+            {lang[langkey].forgotPassword}
           </p>
         )}
         {isSignInForm && (
@@ -286,12 +289,12 @@ const LoginForm = () => {
               className=" cursor-pointer"
             />
             <label className="text-white " htmlFor="input">
-              Remember me
+              {lang[langkey].rememberMe}
             </label>
           </div>
         )}
         <p className="text-gray-500 text-sm font-semibold">
-          {isSignInForm ? "New to Netflix?" : "Already a user?"}
+          {isSignInForm ? `${lang[langkey].newToNetflix}` : `${lang[langkey].alreadyAUser}`}
           <button
             onClick={(event) => {
               event.preventDefault();
@@ -299,13 +302,13 @@ const LoginForm = () => {
             }}
             className="text-white ml-1 hover:underline"
           >
-            {isSignInForm ? "Sign up now" : "Sign in now"}
+            {isSignInForm ? `${lang[langkey].signin}` : `${lang[langkey].signup}`}
           </button>
         </p>
         <p className="text-gray-400 text-[.9rem]">
-          This page is protected by Google reCAPTCHA to ensure you're not a bot.
+          {lang[langkey].reCAPTCHAProtection}
           <Link to="/learn_more" className="text-blue-700 ml-1 hover:underline">
-            Learn more.
+            {lang[langkey].learnMore}
           </Link>
         </p>
       </form>

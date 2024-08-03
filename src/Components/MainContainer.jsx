@@ -11,7 +11,7 @@ const MainContainer = () => {
 
   if (!movies) return;
 
-  const mainMovie = updateTrailer ? updateTrailer : movies[0];
+  const mainMovie = updateTrailer ? updateTrailer : movies[4];
 
   const { title, overview, id } = mainMovie;
 

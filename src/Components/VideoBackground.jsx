@@ -11,7 +11,7 @@ const VideoBackground = ({ movieId }) => {
   return (
     <div className=" w-full sm:h-[90vh] h-[63vh]">
       <iframe
-        className="absolute  sm:top-0 top-24 left-1/2 transform -translate-x-1/2  w-[450vw] sm:w-[250vw]  sm:h-full"
+        className="absolute  sm:-top-4 top-8 left-1/2 transform -translate-x-1/2  w-[450vw] sm:w-[250vw]  sm:h-full h-[60%]"
         src={`https://www.youtube.com/embed/${trailerId}?autoplay=1&loop=1&controls=0&playlist=${trailerId}&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&enablejsapi=1&mute=1&showinfo=0`}
         title="YouTube video player"
         allow="autoplay; encrypted-media"
