@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NLogo from "../Images/Netflix_Logo_PMS.png";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
@@ -8,6 +8,7 @@ import { profileLogoURL, SUPPORTED_LANGUAGE } from "../Utils/Constants.js";
 import { changeLanguage } from "../Utils/ConfigSlice.js";
 import SignOutMenu from "./SignOutMenu.jsx";
 import { useState } from "react";
+import { emptyMovieData } from "../Utils/suggestMoviesSlice.js";
 
 const Header = ({ gptSearch }) => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Header = ({ gptSearch }) => {
   const [signOutMenu, setSignOutMenu] = useState(false)
   
   const handleSignOut = () => {
+    
     signOut(auth)
       .then(() => {
         navigate("/login");
@@ -33,7 +35,7 @@ const Header = ({ gptSearch }) => {
 
   return (
     <div className="absolute  top-0 flex items-center justify-between pr-4 w-full">
-      <img className=" z-10 w-24 min-w-14  sm:w-40" src={NLogo} alt="Logo" />
+      <Link className="z-10" to={"/browse"}><img  className=" z-10 w-24 min-w-14  sm:w-40" src={NLogo} alt="Logo" /></Link>
       {user && (
         <div className="flex gap-3">
           {gptSearch && <div className="z-10 flex items-center border-[1px] sm:text-[1rem] text-xs">
@@ -51,6 +53,7 @@ const Header = ({ gptSearch }) => {
           <button
             onClick={() => {
               dispatch(toggleGptSearch());
+              dispatch(emptyMovieData())
             }}
             className="z-10 sm:text-[1rem] text-sm rounded-md sm:w-28 bg-[#f0f0f0] font-semibold px-2 hover:bg-[#f0f0f0c5] transition-bg duration-200"
           >

@@ -55,10 +55,6 @@ const LoginForm = () => {
       setNameErrMsg("Enter your full name");
     }
 
-    console.log(validName);
-    console.log(validEmail);
-    console.log(validPassword);
-
     if ((isSignInForm || !isSignInForm) && (!validEmail || !validPassword))
       return;
 
