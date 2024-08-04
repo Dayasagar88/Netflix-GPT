@@ -29,9 +29,6 @@ const Header = ({ gptSearch }) => {
       });
   };
 
-  // const changeLanguage = (e) => {
-  //     dispatch(changeLanguage())
-  // }
 
   return (
     <div className="absolute  top-0 flex items-center justify-between pr-4 w-full">

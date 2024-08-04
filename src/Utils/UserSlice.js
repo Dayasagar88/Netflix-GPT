@@ -10,7 +10,7 @@ const UserSlice = createSlice({
         },
         removeUser: (state, action) => {
             return null;
-        }
+        }, 
     }
 });
 

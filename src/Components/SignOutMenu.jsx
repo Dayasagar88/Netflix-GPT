@@ -6,7 +6,7 @@ const SignOutMenu = ({handleSignOut}) => {
 
     const userName = useSelector(store => store.user.displayName)
   return (
-    <div className='absolute p-2 space-y-2 sm:space-y-3 sm:w-40 right-4 text-xs sm:text-sm font-semibold  top-10 rounded-sm sm:top-16 bg-[#363434ec] text-white z-10'>
+    <div className='absolute p-3 space-y-2 sm:space-y-3 sm:w-40 right-4 text-xs sm:text-sm font-semibold  top-10 rounded-sm sm:top-16 bg-[#363434ec] text-white z-10'>
         <li className=' cursor-pointer flex list-none'><img className=' mr-1 w-5 rounded-full'  src={photoURL} alt="" />{userName}</li>
         <li className=' cursor-pointer list-none'><i className= " mr-1 w-5 h-1 fa-solid fa-pencil"></i>Manage Profile</li>
         <li className=' cursor-pointer list-none'> <i className= " mr-1 w-5 h-1 fa-solid fa-user"></i>Account</li>

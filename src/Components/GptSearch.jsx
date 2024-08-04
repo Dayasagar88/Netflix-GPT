@@ -7,7 +7,7 @@ const GptSearch = ({ gptSearch }) => {
   return (
     <div className="relative flex justify-center ">
       <img className="h-[100vh] w-screen object-cover" src={BgImage} alt="img" />
-      <div class="absolute inset-0 bg-gradient-to-b from-[#050505c5]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#050505]"></div>
       <GptSearchInput/>
       <GptSearchSuggestion/>
 
