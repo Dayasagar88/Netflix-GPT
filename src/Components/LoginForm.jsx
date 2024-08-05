@@ -11,6 +11,7 @@ const LoginForm = () => {
   const [emailErrMsg, setEmailErrMsg] = useState(null);
   const [passwordErrMsg, setPasswordErrMsg] = useState(null);
   const [hidePassword, setHidePassword] = useState(true);
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -37,6 +38,7 @@ const LoginForm = () => {
     if (!validEmail || !validPassword) return;
 
     //Proceed with sign-in
+    setLoading(true)
     signInWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userCredential) => {
         // Signed in
@@ -47,7 +49,10 @@ const LoginForm = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setPasswordErrMsg(`${lang[langkey].invalidCredentials}`);
-      });
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   };
 
   const toggleHidePassword = () => {
@@ -70,7 +75,7 @@ const LoginForm = () => {
         </h1>
         <input
           ref={email}
-          className={`text-white font-semibold py-1 sm:py-4 px-2 bg-[#58627082] rounded-[3px] ${
+          className={`text-white sm:text-[1rem] text-[.9rem] font-semibold py-2 sm:py-4 px-2 bg-[#58627082] rounded-[3px] ${
             emailErrMsg ? "border border-red-500" : "border border-gray-500 "
           }`}
           type="email"
@@ -87,7 +92,7 @@ const LoginForm = () => {
         <div className=" relative flex items-center">
           <input
             ref={password}
-            className={`text-white w-full font-semibold py-1 sm:py-4 px-2 bg-[#58627082] rounded-[3px] ${
+            className={`text-white w-full sm:text-[1rem]  text-[.9rem] font-semibold py-2 sm:py-4 px-2 bg-[#58627082] rounded-[3px] ${
               passwordErrMsg
                 ? "border border-red-500"
                 : "border border-gray-500 "
@@ -132,7 +137,8 @@ const LoginForm = () => {
           }}
           className="text-white  font-semibold bg-[#e80716] sm:py-[8px] p-[4px] rounded-[3px] transition-bg  duration-200 hover:bg-red-700"
         >
-          {lang[langkey].signin}
+           {loading ? <p className="animate-spin rounded-full border-2 border-primary mx-auto border-t-transparent h-6 w-6" /> : `${lang[langkey].signin}`}
+          
         </button>
 
         <p className="text-gray-500  font-semibold mx-auto">

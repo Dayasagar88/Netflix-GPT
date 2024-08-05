@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LoginHeader from "./LoginHeader";
 import BgImage from "../Images/bg-image (2).jpg";
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../Utils/LanguageConstants";
 import { useNavigate } from "react-router-dom";
-import { addUser, addUserEmail } from "../Utils/UserSlice";
+import { addUser,  removeUser } from "../Utils/UserSlice";
 import { validateEmailOrPhone } from "../Utils/Validate";
 
 const MainPage = () => {
@@ -14,6 +14,16 @@ const MainPage = () => {
   const naviagte = useNavigate();
   const emailRef = useRef();
   const [emailError , setEmailError] = useState(null)
+  const userObj = useSelector(store => store.user)
+
+
+  useEffect(() => {
+    dispatch(removeUser())
+    // console.log(userObj)
+    // if(userObj === null){
+    //   naviagte("/")
+    // }
+  }, [])
 
   const handleSignUp = () => {
     const validEmail = validateEmailOrPhone(emailRef.current.value);

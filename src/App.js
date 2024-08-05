@@ -14,13 +14,10 @@ import GetStarted from './Components/GetStarted';
 function App() {
   const dispatch = useDispatch();
 
-  
-
   useEffect(() => {
     const unsubscribe =  onAuthStateChanged(auth, (user) => {
        if (user) {
          const { uid, email, displayName, photoURL } = user;  
-         console.log("Tushar") 
          dispatch(
            addUser({
              uid: uid,

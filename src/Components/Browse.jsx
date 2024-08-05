@@ -7,7 +7,6 @@ import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryCont from "./SecondaryCont";
 import GptSearch from "./GptSearch";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Browse = () => {
@@ -15,15 +14,22 @@ const Browse = () => {
   useTrendingMovies();
   useUpComingMovies();
   useTopRatedMovies();
-const navigate = useNavigate();
- const userObj = useSelector(store=>store.user);
- useEffect(()=>{if(!userObj?.uid) navigate("/login")},[userObj])
+  const navigate = useNavigate();
+  const userObj = useSelector((store) => store.user);
+
+  // useEffect(() => {
+  //   if (!userObj?.uid) {
+  //     navigate("/mainpage");
+  //   } else {
+  //     navigate("/browse");
+  //   }
+  // }, []);
+
   const gptSearch = useSelector((store) => store.gptSearch.gptSearch);
 
   return (
-    
     <div className="flex flex-col justify-center overflow-x-hidden bg-black">
-      <Header gptSearch={gptSearch}/>
+      <Header gptSearch={gptSearch} />
 
       {gptSearch ? (
         <GptSearch />
