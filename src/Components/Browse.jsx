@@ -8,12 +8,15 @@ import MainContainer from "./MainContainer";
 import SecondaryCont from "./SecondaryCont";
 import GptSearch from "./GptSearch";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Browse = () => {
   useNowPlayingMovies();
   useTrendingMovies();
   useUpComingMovies();
   useTopRatedMovies();
+
+
   const navigate = useNavigate();
   const userObj = useSelector((store) => store.user);
 
